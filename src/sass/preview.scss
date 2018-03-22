@@ -1,0 +1,100 @@
+//
+// preview
+// --------------------------------------------------
+
+
+
+.#{$namespace}preview{
+    position: relative;
+    background-color: #FFFFFF;
+    &:before{
+        @include setTopLine($muiLineColorLight);
+    }
+    &:after{
+        @include setBottomLine($muiLineColorLight);
+    }
+}
+.#{$namespace}preview-hd{
+    position: relative;
+    padding: 10px 15px;
+    text-align: right;
+    line-height: 2.5em;
+    &:after{
+        @include setBottomLine($muiLineColorLight);
+        left: 15px;
+    }
+    .#{$namespace}preview-value{
+        font-style: normal;
+        font-size: 1.6em;
+    }
+}
+.#{$namespace}preview-bd{
+    padding: 10px 15px;
+    font-size: .9em;
+    text-align: right;
+    color: $grey-color;
+    line-height: 2;
+    &:after{
+        @include setBottomLine($muiLineColorLight);
+        left: 15px;
+    }
+}
+.#{$namespace}preview-ft{
+    position: relative;
+    line-height: 50px;
+    display: flex;
+    &:before {
+        @include setTopLine($muiDialogLineColor);
+    }
+}
+.#{$namespace}preview-item{
+    overflow: hidden;
+    @include clearfix();    
+}
+.#{$namespace}preview-label{
+    float: left;
+    margin-right: 1em;
+    min-width: 4em;
+    color: $grey-color;
+    text-align: justify;
+    text-align-last: justify;
+}
+.#{$namespace}preview-value{
+    display: block;
+    overflow: hidden;
+    word-break:normal;
+    word-wrap: break-word;
+    color: $default-color;
+}
+.#{$namespace}preview-btn {
+    position: relative;
+    display: block;
+    flex: 1;
+    color: $muiDialogLinkColor;
+    text-align: center;
+    @include setTapColor();
+    & button {
+        background-color: transparent;
+        border: 0;
+        outline: 0;
+        line-height: inherit;
+        font-size: inherit;
+    }
+    &:active {
+        background-color: $muiDialogLinkActiveBc;
+    }
+    &:after {
+        @include setLeftLine($muiDialogLineColor);
+    }
+    &:first-child {
+        &:after {
+            display: none;
+        }
+    }
+}
+.#{$namespace}preview-btn_default {
+    color: $grey-color;
+}
+.#{$namespace}preview-btn_primary {
+    color: #0BB20C;
+}

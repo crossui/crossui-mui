@@ -1,0 +1,53 @@
+//
+// flex
+// --------------------------------------------------
+
+
+.#{$namespace}grid {
+    display: -webkit-box;
+    display: box;
+}
+.#{$namespace}grid-middle {
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    box-pack: center;
+    box-align: center;
+}
+.#{$namespace}grid-vertical {
+    -webkit-box-orient: vertical;
+    box-orient: vertical;
+}
+.#{$namespace}grid-label {
+    -webkit-box-flex: 0;
+    box-flex: 0;
+    width: 100px;
+    font-weight: 600;
+}
+.#{$namespace}flex-0 {
+    -webkit-box-flex: 0;
+    box-flex: 0;
+}
+.#{$namespace}flex-1 {
+    -webkit-box-flex: 1;
+    box-flex: 1;
+}
+.#{$namespace}flex-2 {
+    -webkit-box-flex: 2;
+    box-flex: 2;
+}
+.#{$namespace}flex-3 {
+    -webkit-box-flex: 3;
+    box-flex: 3;
+}
+.#{$namespace}flex-4 {
+    -webkit-box-flex: 4;
+    box-flex: 3;
+}
+.#{$namespace}flex-5 {
+    -webkit-box-flex: 5;
+    box-flex: 5;
+}
+.#{$namespace}flex-6 {
+    -webkit-box-flex: 6;
+    box-flex: 6;
+}

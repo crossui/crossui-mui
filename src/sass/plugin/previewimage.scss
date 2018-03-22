@@ -1,0 +1,155 @@
+// Variables
+@import "../variables.scss";
+
+// Mixins
+@import "../mixins.scss";
+
+
+//previewimage
+.#{$namespace}preview-image.#{$namespace}fullscreen {
+	position: fixed;
+	z-index: 20;
+	background-color: #000;
+}
+.#{$namespace}preview-header,
+.#{$namespace}preview-footer {
+	position: absolute;
+	width: 100%;
+	left: 0;
+	z-index: 10;
+}
+.#{$namespace}preview-header {
+	height: 44px;
+	top: 0;
+}
+.#{$namespace}preview-footer {
+	height: 50px;
+	bottom: 0px;
+}
+.#{$namespace}preview-header .#{$namespace}preview-indicator {
+	display: block;
+	line-height: 25px;
+	color: #fff;
+	text-align: center;
+	margin: 15px auto 4;
+	width: 70px;
+	background-color: rgba(0, 0, 0, 0.4);
+	border-radius: 12px;
+	font-size: 16px;
+}
+.#{$namespace}preview-image {
+	display: none;
+	-webkit-animation-duration: 0.5s;
+	animation-duration: 0.5s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+.#{$namespace}preview-image.#{$namespace}preview-in {
+	-webkit-animation-name: fadeIn;
+	animation-name: fadeIn;
+}
+.#{$namespace}preview-image.#{$namespace}preview-out {
+	background: none;
+	-webkit-animation-name: fadeOut;
+	animation-name: fadeOut;
+}
+.#{$namespace}preview-image.#{$namespace}preview-out .#{$namespace}preview-header,
+.#{$namespace}preview-image.#{$namespace}preview-out .#{$namespace}preview-footer {
+	display: none;
+}
+.#{$namespace}zoom-scroller {
+	position: absolute;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	-webkit-backface-visibility: hidden;
+}
+.#{$namespace}zoom {
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+.#{$namespace}slider .#{$namespace}slider-group .#{$namespace}slider-item img {
+	width: auto;
+	height: auto;
+	max-width: 100%;
+	max-height: 100%;
+}
+.#{$namespace}android-4-1 .#{$namespace}slider .#{$namespace}slider-group .#{$namespace}slider-item img {
+	width: 100%;
+}
+.#{$namespace}android-4-1 .#{$namespace}slider.#{$namespace}preview-image .#{$namespace}slider-group .#{$namespace}slider-item {
+	display: inline-table;
+}
+.#{$namespace}android-4-1 .#{$namespace}slider.#{$namespace}preview-image .#{$namespace}zoom-scroller img {
+	display: table-cell;
+	vertical-align: middle;
+}
+.#{$namespace}preview-loading {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	display: none;
+}
+.#{$namespace}preview-loading.#{$namespace}active {
+	display: block;
+}
+.#{$namespace}preview-loading .#{$namespace}spinner-white {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -25px;
+	margin-top: -25px;
+	height: 50px;
+	width: 50px;
+}
+.#{$namespace}preview-image img.#{$namespace}transitioning {
+	-webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
+	transition: transform 0.5s ease, opacity 0.5s ease;
+}
+@-webkit-keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+@-webkit-keyframes fadeOut {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+@keyframes fadeOut {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}

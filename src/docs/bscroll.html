@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../css/mui.min.css">
+
+
+		<style>
+
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">bscroll下拉加载</h1>
+		</header>
+		<div class="mui-content">
+			<div class="bscroll-wrapper bscroll-wrapper-hook" style="top:40px">
+				<div>
+					<!-- 顶部提示信息 -->
+					<div class="bscroll-top-tip">
+						<span class="bscroll-refresh-hook">下拉刷新</span>
+					</div>
+					<!-- 列表 -->
+					<ul class="mui-table-view bscroll-content-hook">
+						<li class="mui-table-view-cell">
+							第1个选项卡子项-1
+						</li>
+						<li class="mui-table-view-cell">
+							第1个选项卡子项-2
+						</li>
+						<li class="mui-table-view-cell">
+							第1个选项卡子项-3
+						</li>
+						<li class="mui-table-view-cell">
+							第1个选项卡子项-4
+						</li>
+						<li class="mui-table-view-cell">
+							第1个选项卡子项-5
+						</li>
+						<li class="mui-table-view-cell">
+							第1个选项卡子项-6
+						</li>
+						<li class="mui-table-view-cell">
+							第1个选项卡子项-7
+						</li>
+						<li class="mui-table-view-cell">
+							第1个选项卡子项-8
+						</li>
+						<li class="mui-table-view-cell">
+							第1个选项卡子项-9
+						</li>
+						<li class="mui-table-view-cell">
+							第1个选项卡子项-10
+						</li>
+						<li class="mui-table-view-cell">
+							第1个选项卡子项-11
+						</li>
+						<li class="mui-table-view-cell">
+							第1个选项卡子项-12
+						</li>
+						<li class="mui-table-view-cell">
+							第1个选项卡子项-13
+						</li>
+						<li class="mui-table-view-cell">
+							第1个选项卡子项-14
+						</li>
+						<li class="mui-table-view-cell">
+							第1个选项卡子项-15
+						</li>
+						<li class="mui-table-view-cell">
+							第1个选项卡子项-16
+						</li>
+						<li class="mui-table-view-cell">
+							第1个选项卡子项-17
+						</li>
+						<li class="mui-table-view-cell">
+							第1个选项卡子项-18
+						</li>
+						<li class="mui-table-view-cell">
+							第1个选项卡子项-19
+						</li>
+						<li class="mui-table-view-cell">
+							第1个选项卡子项-20
+						</li>
+					</ul>
+					<!-- 
+						1、底部提示信息 
+						2、这里有一种情况,就是没有更多数据时,这里的文本应该显示"暂无更多数据"
+					-->
+					<div class="bscroll-bottom-tip">
+						<span class="bscroll-loading-hook">上拉查看更多</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		</body>
+	<script src="../js/mui.min.js"></script>
+	<script>
+		mui.init({
+			swipeBack:true //启用右滑关闭功能
+		});
+
+		mui.ready(function(){
+
+			var scroll = null,
+				listWrapper = document.querySelector('.bscroll-wrapper-hook'),
+				listContent = document.querySelector('.bscroll-content-hook'),
+				topTip = document.querySelector('.bscroll-refresh-hook'),
+				bottomTip = document.querySelector('.bscroll-loading-hook');
+			/*
+			* 此处可优化,定义一个变量,记录用户滑动的状态,初始值为0,滑动中为1,滑动结束、数据请求成功重置为0
+			* 防止用户刷新列表http请求过多
+			*/
+
+			function initScroll() {
+				scroll = new window.BScroll(listWrapper, {
+					probeType: 1
+				});
+				// 滑动中
+				scroll.on('scroll', function (position) {
+					if(position.y > 30) {
+						topTip.innerText = '释放立即刷新';
+					}
+				});
+				/*
+				* @ touchend:滑动结束的状态
+				* @ maxScrollY:屏幕最大滚动高度
+				*/ 
+				// 滑动结束
+				scroll.on('touchend', function (position) {
+					if (position.y > 30) {
+						setTimeout(function () {
+							/*
+							* 这里发送ajax刷新数据
+							* 刷新后,后台只返回第1页的数据,无论用户是否已经上拉加载了更多
+							*/
+							// 恢复文本值
+							topTip.innerText = '下拉刷新';
+							// 刷新成功后的提示
+							mui.toast('刷新成功');
+							// 刷新列表后,重新计算滚动区域高度
+							scroll.refresh();
+						}, 500);
+					}else if(position.y < (this.maxScrollY + 300)) {						
+						bottomTip.innerText = '加载中...';
+						setTimeout(function () {
+							// 向列表添加数据
+							reloadData();
+							
+						}, 500);
+					}
+				});
+			}
+			initScroll();
+
+			// 加载更多方法
+			function reloadData() {
+				var template = '';
+				for(var i=0; i<10; i++){
+					template += '<li class="mui-table-view-cell">'+
+									'新的子项-1121'+
+								'</li>';
+				}
+				// 恢复文本值 
+				bottomTip.innerText = '上拉查看更多';
+				// 向ul容器中添加内容
+				listContent.innerHTML = listContent.innerHTML + template;
+				// 加载更多后,重新计算滚动区域高度
+				scroll.refresh();
+			}
+
+
+
+
+		})
+	</script>
+</html>

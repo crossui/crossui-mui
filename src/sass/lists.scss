@@ -1,0 +1,138 @@
+//
+// lists
+// --------------------------------------------------
+
+
+.#{$namespace}lists {
+  //margin-top: 1.17647059em;
+  background-color: $muiListsBg;
+  line-height: $muiListsLineHeight;
+  font-size: $muiListsFontSize; //cell中间有效高度23px，跟客户端默认图标尺寸一致
+
+  overflow: hidden; //因为每个cell的border使用before元素left搞的，ie下伪元素的containing block估计跟标准不同，在cell上用oh不生效
+
+  // onepx
+  position: relative;
+  &:before {
+    @include setTopLine($muiListsBorderColor);
+    z-index: 2;
+  }
+  &:after {
+    @include setBottomLine($muiListsBorderColor);
+    z-index: 2;
+  }
+}
+
+.#{$namespace}lists-title {
+  margin-top: .77em; // 15px - 行高
+  margin-bottom: .3em; // 8px - 行高
+  padding-left: $muiListsGapH;
+  padding-right: $muiListsGapH;
+  color: $grey-color;
+  font-size: $muiListsTipsFontSize;
+
+  &  +  .#{$namespace}lists {
+    margin-top: 0;
+  }
+}
+
+.#{$namespace}lists-tips {
+  margin-top: .3em; // 8px - 行高
+  color: $grey-color;
+  padding-left: $muiListsGapH;
+  padding-right: $muiListsGapH;
+  font-size: $muiListsTipsFontSize;
+}
+
+.#{$namespace}lists-cell {
+  padding: $muiListsGapV $muiListsGapH;
+  position: relative; //这个是为了兼容lists容器onepx方案被before挡住而做的
+  display: flex;
+  align-items: center;
+  &:before {
+    @include setTopLine($muiListsBorderColor);
+    left: $muiListsGapH;
+    z-index: 2;
+  }
+  &:first-child {
+    &:before {
+      display: none;
+    }
+  }
+}
+.#{$namespace}lists-primary{
+  align-items: flex-start;
+}
+.#{$namespace}lists-hd{
+  padding-right: 10px;
+}
+.#{$namespace}lists-bd{
+  flex: 1;
+}
+.#{$namespace}lists-ft {
+  text-align: right;
+  color: $grey-color;
+}
+
+
+
+
+.#{$namespace}lists-swiped {
+  display: block;
+  padding: 0;
+  > .#{$namespace}lists-bd {
+    position: relative;
+    z-index: 1;
+    background-color: #FFFFFF;
+  }
+  > .#{$namespace}lists-ft {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    color: #FFFFFF;
+  }
+}
+.#{$namespace}swiped-btn {
+  display: block;
+  padding: $muiListsGapV 1em;
+  line-height: $muiListsLineHeight;
+  color: inherit;
+}
+.#{$namespace}swiped-btn_default {
+  background-color: #C7C7CC;
+}
+.#{$namespace}swiped-btn_warn {
+  background-color: #FF3B30;
+}
+.#{$namespace}lists-access {
+  @include setTapColor();
+  color: inherit;
+  &:active {
+    background-color: #ECECEC;
+  }
+  .#{$namespace}lists-ft {
+    padding-right: 13px;
+    position: relative;
+    &:after {
+      content: " ";
+      @include setArrowRight(6px, #C8C8CD, 2px);
+      position: absolute;
+      top: 50%;
+      margin-top: -4px;
+      right: 2px;
+    }
+  }
+}
+.#{$namespace}lists-link{
+  color: $default-color;
+  font-size: 14px;
+
+  // 由于weui-cell:first-child的:before为隐藏，所以这里要重新显示出来
+  &:first-child{
+    &:before{
+      display: block;
+    }
+  }
+}

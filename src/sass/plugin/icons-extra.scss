@@ -1,0 +1,70 @@
+// Variables
+@import "../variables.scss";
+
+// Mixins
+@import "../mixins.scss";
+
+
+@font-face {
+    font-family: MuiiconSpread;
+    font-weight: normal;
+    font-style: normal;
+    src:  url('../fonts/mui-icons-extra.ttf') format('truetype'); /* iOS 4.1- */
+}
+.#{$namespace}icon-extra
+{
+    font-family: MuiiconSpread;
+    font-size: 24px;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+    display: inline-block;
+    text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+}
+.#{$namespace}icon-extra-cold:before { content: "\e500"; }
+.#{$namespace}icon-extra-share:before { content: "\e200"; }
+.#{$namespace}icon-extra-class:before { content: "\e118"; }
+.#{$namespace}icon-extra-custom:before { content: "\e117"; }
+.#{$namespace}icon-extra-new:before { content: "\e103"; }
+.#{$namespace}icon-extra-card:before { content: "\e104"; }
+.#{$namespace}icon-extra-grech:before { content: "\e105"; }
+.#{$namespace}icon-extra-trend:before { content: "\e106"; }
+.#{$namespace}icon-extra-filter:before { content: "\e207"; }
+.#{$namespace}icon-extra-holiday:before { content: "\e300"; }
+.#{$namespace}icon-extra-cart:before { content: "\e107"; }
+.#{$namespace}icon-extra-heart:before { content: "\e180"; }
+.#{$namespace}icon-extra-computer:before { content: "\e600"; }
+.#{$namespace}icon-extra-express:before { content: "\e108"; }
+.#{$namespace}icon-extra-gift:before { content: "\e109"; }
+.#{$namespace}icon-extra-gold:before { content: "\e102"; }
+.#{$namespace}icon-extra-lamp:before { content: "\e601"; }
+.#{$namespace}icon-extra-rank:before { content: "\e110"; }
+.#{$namespace}icon-extra-notice:before { content: "\e111"; }
+.#{$namespace}icon-extra-sweep:before { content: "\e202"; }
+.#{$namespace}icon-extra-arrowleftcricle:before { content: "\e401"; }
+.#{$namespace}icon-extra-dictionary:before { content: "\e602"; }
+.#{$namespace}icon-extra-heart-filled:before { content: "\e119"; }
+.#{$namespace}icon-extra-xiaoshuo:before { content: "\e607"; }
+.#{$namespace}icon-extra-top:before { content: "\e403"; }
+.#{$namespace}icon-extra-people:before { content: "\e203"; }
+.#{$namespace}icon-extra-topic:before { content: "\e603"; }
+.#{$namespace}icon-extra-hotel:before { content: "\e301"; }
+.#{$namespace}icon-extra-like:before { content: "\e206"; }
+.#{$namespace}icon-extra-regist:before { content: "\e201"; }
+.#{$namespace}icon-extra-order:before { content: "\e113"; }
+.#{$namespace}icon-extra-alipay:before { content: "\e114"; }
+.#{$namespace}icon-extra-find:before { content: "\e400"; }
+.#{$namespace}icon-extra-arrowrightcricle:before { content: "\e402"; }
+.#{$namespace}icon-extra-calendar:before { content: "\e115"; }
+.#{$namespace}icon-extra-prech:before { content: "\e116"; }
+.#{$namespace}icon-extra-cate:before { content: "\e501"; }
+.#{$namespace}icon-extra-comment:before { content: "\e209"; }
+.#{$namespace}icon-extra-at:before { content: "\e208"; }
+.#{$namespace}icon-extra-addpeople:before { content: "\e204"; }
+.#{$namespace}icon-extra-peoples:before { content: "\e205"; }
+.#{$namespace}icon-extra-calc:before { content: "\e101"; }
+.#{$namespace}icon-extra-classroom:before { content: "\e604"; }
+.#{$namespace}icon-extra-phone:before { content: "\e404"; }
+.#{$namespace}icon-extra-university:before { content: "\e605"; }
+.#{$namespace}icon-extra-outline:before { content: "\e606"; }

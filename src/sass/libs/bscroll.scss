@@ -1,0 +1,35 @@
+//
+// Bars
+// --------------------------------------------------
+.bscroll-tips{
+    height: 20px;
+}
+
+.bscroll-wrapper {
+    position:  absolute;
+    z-index: 1;  
+    top: 0;  
+    bottom: 0;  
+    left: 0;  
+    width: 100%;  
+    overflow: hidden;  
+}
+.bscroll-top-tip{
+    position: absolute;  
+    top: -40px;  
+    left: 0;
+    z-index: 1;  
+    width: 100%;  
+    height:40px;  
+    line-height:40px;  
+    text-align:center;
+    color: #555;
+} 
+.bscroll-bottom-tip{
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    color: #777;
+    background: #f2f2f2;
+}
